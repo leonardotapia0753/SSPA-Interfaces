@@ -1,11 +1,12 @@
-from PySide2.QtWidgets import QPushButton, QApplication
+from PySide2.QtWidgets import QMainWindow, QApplication
+from mainwindow import MainWindow
 import sys
 
 #Aplicación de Qt
 app = QApplication()
-#Se crea un botón con la palabra Hola
-button = QPushButton('Hola')
-#Se hace visible el botón
-button.show()
+#Se crea una ventana
+window = MainWindow()
+#Se hace visible la ventana
+window.show()
 #Qt loop
 sys.exit(app.exec_())
