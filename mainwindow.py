@@ -29,7 +29,7 @@ class MainWindow(QMainWindow):
             '.',
             'JSON (*.json)'
         )[0]
-        if self.aeropuerto.abrir(ubicacion)
+        if self.aeropuerto.abrir(ubicacion):
             QMessageBox.information(
                 self,
                 "Éxito",
