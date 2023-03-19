@@ -120,22 +120,22 @@
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_3">
              <item>
-              <widget class="QPushButton" name="agregar_inicio_pushButton">
-               <property name="tabletTracking">
-                <bool>false</bool>
-               </property>
-               <property name="text">
-                <string>Agregar Inicio</string>
-               </property>
-              </widget>
-             </item>
-             <item>
               <widget class="QPushButton" name="agregar_final_pushButton">
                <property name="tabletTracking">
                 <bool>false</bool>
                </property>
                <property name="text">
                 <string>Agregar Final</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="agregar_inicio_pushButton">
+               <property name="tabletTracking">
+                <bool>false</bool>
+               </property>
+               <property name="text">
+                <string>Agregar Inicio</string>
                </property>
               </widget>
              </item>
@@ -194,8 +194,32 @@
      <height>22</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuArchivo">
+    <property name="title">
+     <string>Archivo</string>
+    </property>
+    <addaction name="actionAbrir"/>
+    <addaction name="actionGuardar"/>
+   </widget>
+   <addaction name="menuArchivo"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionAbrir">
+   <property name="text">
+    <string>Abrir</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionGuardar">
+   <property name="text">
+    <string>Guardar</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
