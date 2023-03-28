@@ -1,4 +1,4 @@
-from PySide2.QtWidgets import QMainWindow, QFileDialog, QMessageBox
+from PySide2.QtWidgets import QMainWindow, QFileDialog, QMessageBox, QTableWidgetItem
 from PySide2.QtCore import Slot
 from ui_mainwindow import Ui_MainWindow
 from aeropuerto import Aeropuerto
@@ -18,11 +18,12 @@ class MainWindow(QMainWindow):
         self.ui.mostrar_pushButton.clicked.connect(self.click_mostrar)
         self.ui.actionAbrir.triggered.connect(self.action_Abrir_Archivo)
         self.ui.actionGuardar.triggered.connect(self.action_Guardar_Archivo)
+        self.ui.mostrar_tabla_pushButton.clicked.connect(self.mostrar_tabla)
+        self.ui.buscar_pushButton.clicked.connect(self.buscar_id)
 
 
     @Slot( )
     def action_Abrir_Archivo(self):
-        #print("Abrir_Archivo")
         ubicacion = QFileDialog.getOpenFileName(
             self,
             'Abrir Archivo',
@@ -88,4 +89,65 @@ class MainWindow(QMainWindow):
     def click_mostrar(self):
         self.ui.salida.clear()
         self.ui.salida.insertPlainText(str(self.aeropuerto))
+    
+    @Slot( )
+    def mostrar_tabla(self):
+        self.ui.tabla.setColumnCount(4)
+        headers = ["ID", "Origen", "Destino", "Peso"]
+        self.ui.tabla.setHorizontalHeaderLabels(headers)
+        self.ui.tabla.setRowCount(len(self.aeropuerto))
+
+        row = 0
+
+        for vuelo in self.aeropuerto:
+            id_widget = QTableWidgetItem(vuelo.id)
+            origen_widget = QTableWidgetItem(vuelo.origen)
+            destino_widget = QTableWidgetItem(vuelo.destino)
+            peso_widget = QTableWidgetItem(str(vuelo.peso))
+
+            self.ui.tabla.setItem(row, 0, id_widget)
+            self.ui.tabla.setItem(row, 1, origen_widget)
+            self.ui.tabla.setItem(row, 2, destino_widget)
+            self.ui.tabla.setItem(row, 3, peso_widget)
+
+            row += 1
+
+    @Slot()
+    def buscar_id(self):
+        id = self.ui.buscar_lineEdit.text()
+
+        encontrado = False
+
+        for vuelo in self.aeropuerto:
+            if id == vuelo.id:
+                self.ui.tabla.clear()
+                self.ui.tabla.setColumnCount(4)
+                headers = ["ID", "Origen", "Destino", "Peso"]
+                self.ui.tabla.setHorizontalHeaderLabels(headers)
+                self.ui.tabla.setRowCount(1)
+
+
+
+
+                id_widget = QTableWidgetItem(vuelo.id)
+                origen_widget = QTableWidgetItem(vuelo.origen)
+                destino_widget = QTableWidgetItem(vuelo.destino)
+                peso_widget = QTableWidgetItem(str(vuelo.peso))
+
+                row = 0
+
+                self.ui.tabla.setItem(row, 0, id_widget)
+                self.ui.tabla.setItem(row, 1, origen_widget)
+                self.ui.tabla.setItem(row, 2, destino_widget)
+                self.ui.tabla.setItem(row, 3, peso_widget)
+
+                encontrado = True
+                return
+            
+        if not encontrado:
+            QMessageBox.warning(
+                self,
+                "Atención",
+                f'El vuelo con el identificador "{id}" no fue encontrado.'
+            )
 
