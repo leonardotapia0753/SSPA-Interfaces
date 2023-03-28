@@ -20,3 +20,19 @@ class Vuelo:
             "destino": self.__destino,
             "peso": self.__peso
         }
+    
+    @property
+    def id(self):
+        return self.__id
+    
+    @property
+    def origen(self):
+        return self.__origen
+    
+    @property
+    def destino(self):
+        return self.__destino
+    
+    @property
+    def peso(self):
+        return self.__peso
