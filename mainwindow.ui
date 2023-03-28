@@ -6,9 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>613</width>
-    <height>473</height>
+    <width>615</width>
+    <height>635</height>
    </rect>
+  </property>
+  <property name="contextMenuPolicy">
+   <enum>Qt::DefaultContextMenu</enum>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -18,7 +21,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -54,20 +57,6 @@
              </property>
             </widget>
            </item>
-           <item row="4" column="1">
-            <widget class="QPushButton" name="agregar_inicio_pushButton">
-             <property name="text">
-              <string>Agregar Inicio</string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="1">
-            <widget class="QPushButton" name="agregar_final_pushButton">
-             <property name="text">
-              <string>Agregar Final</string>
-             </property>
-            </widget>
-           </item>
            <item row="0" column="0">
             <widget class="QLabel" name="label">
              <property name="text">
@@ -77,13 +66,6 @@
            </item>
            <item row="2" column="1">
             <widget class="QLineEdit" name="destino_lineEdit"/>
-           </item>
-           <item row="6" column="1">
-            <widget class="QPushButton" name="mostrar_pushButton">
-             <property name="text">
-              <string>Mostrar</string>
-             </property>
-            </widget>
            </item>
            <item row="1" column="1">
             <widget class="QLineEdit" name="origen_lineEdit"/>
@@ -98,11 +80,44 @@
            <item row="3" column="1">
             <widget class="QSpinBox" name="peso_spinBox"/>
            </item>
+           <item row="4" column="0" colspan="2">
+            <widget class="QPushButton" name="agregar_inicio_pushButton">
+             <property name="text">
+              <string>Agregar Inicio</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0" colspan="2">
+            <widget class="QPushButton" name="agregar_final_pushButton">
+             <property name="text">
+              <string>Agregar Final</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="0" colspan="2">
+            <widget class="QPushButton" name="mostrar_pushButton">
+             <property name="text">
+              <string>Mostrar</string>
+             </property>
+            </widget>
+           </item>
           </layout>
          </widget>
         </item>
         <item row="0" column="1">
          <widget class="QPlainTextEdit" name="salida">
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="contextMenuPolicy">
+           <enum>Qt::NoContextMenu</enum>
+          </property>
+          <property name="tabChangesFocus">
+           <bool>true</bool>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
           <property name="plainText">
            <string/>
           </property>
@@ -137,7 +152,20 @@
          </widget>
         </item>
         <item row="1" column="0" colspan="3">
-         <widget class="QTableWidget" name="tabla"/>
+         <widget class="QTableWidget" name="tabla">
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="contextMenuPolicy">
+           <enum>Qt::NoContextMenu</enum>
+          </property>
+          <property name="sizeAdjustPolicy">
+           <enum>QAbstractScrollArea::AdjustToContents</enum>
+          </property>
+          <property name="tabKeyNavigation">
+           <bool>false</bool>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -150,8 +178,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>613</width>
-     <height>21</height>
+     <width>615</width>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuArchivo">
@@ -181,6 +209,21 @@
    </property>
   </action>
  </widget>
+ <tabstops>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>id_lineEdit</tabstop>
+  <tabstop>origen_lineEdit</tabstop>
+  <tabstop>destino_lineEdit</tabstop>
+  <tabstop>peso_spinBox</tabstop>
+  <tabstop>agregar_inicio_pushButton</tabstop>
+  <tabstop>agregar_final_pushButton</tabstop>
+  <tabstop>mostrar_pushButton</tabstop>
+  <tabstop>salida</tabstop>
+  <tabstop>buscar_lineEdit</tabstop>
+  <tabstop>buscar_pushButton</tabstop>
+  <tabstop>mostrar_tabla_pushButton</tabstop>
+  <tabstop>tabla</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
